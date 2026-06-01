@@ -1,0 +1,8 @@
+{
+  "project": "rox-01-diagnostic",
+  "can_interface": "can0",
+  "can_bitrate": 500000,
+  "can_timeout": 1.0,
+  "firmware_timeout": 30,
+  "uds_timeout": 2.0
+}
