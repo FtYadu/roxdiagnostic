@@ -1,0 +1,50 @@
+{
+  "project": "rox-01-diagnostic-tool",
+  "model": "gpt-5.3-codex-spark",
+  "organization": "FtYadu",
+  "repository": "roxdiagnostic",
+  "api_timeout_seconds": 300,
+  "max_retries": 3,
+  "auto_recovery": true,
+  "phases": [
+    "firmware_extraction",
+    "ecu_analysis",
+    "protocol_extraction",
+    "implementation",
+    "testing",
+    "deployment"
+  ],
+  "api_keys": {
+    "openai_codex": "${OPENAI_API_KEY}",
+    "anthropic_claude": "${ANTHROPIC_API_KEY}"
+  },
+  "can_configuration": {
+    "interface": "socketcan",
+    "channel": "can0",
+    "bitrate": 500000,
+    "timeout": 1.0,
+    "retry_attempts": 3
+  },
+  "uds_configuration": {
+    "broadcast_id": "0x7DF",
+    "response_id": "0x7E8",
+    "bootloader_tx": "0x731",
+    "bootloader_rx": "0x732"
+  },
+  "firmware": {
+    "max_size_mb": 64,
+    "block_size": 256,
+    "verify_crc": true,
+    "backup_original": true
+  },
+  "parallelization": {
+    "enabled": true,
+    "max_workers": 4,
+    "batch_size": 10
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "build/logs/rox_diagnostic.log",
+    "console": true
+  }
+}
